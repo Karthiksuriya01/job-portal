@@ -10,6 +10,7 @@ import JobPage from './pages/JobPage';
 import AppLayout from './layout/AppLayout';
 import './App.css';
 import { ThemeProvider } from './components/ui/theme-provider';
+import ProtectedRoute from './components/Protected-route';
 
 
 
@@ -27,48 +28,61 @@ const App = () => {
         {
           path: "/onboarding",
           element: (
-    
+            <ProtectedRoute>
+
               <Onboarding />
+            </ProtectedRoute>
            
           ),
         },
         {
           path: "/jobs",
           element: (
-            
+            <ProtectedRoute>
+
               <JobListing />
+            </ProtectedRoute>
       
           ),
         },
         {
           path: "/post-job",
           element: (
-
+            <ProtectedRoute>
+              
               <PostJob />
+            </ProtectedRoute>
       
           ),
         },
         {
           path: "/my-jobs",
           element: (
-            
+            <ProtectedRoute>
+
               <MyJobs />
+            </ProtectedRoute>
   
           ),
         },
         {
           path: "/saved-jobs",
           element: (
-          
+            <ProtectedRoute>
+
               <SavedJobs />
+            </ProtectedRoute>
             
           ),
         },
         {
           path: "/job/:id",
           element: (
-          
+            <ProtectedRoute>
+
               <JobPage />
+            </ProtectedRoute>
+          
           
           ),
         },

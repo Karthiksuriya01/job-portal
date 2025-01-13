@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "./ui/button";
 import { SignedIn, SignedOut, SignIn, UserButton } from "@clerk/clerk-react";
 import { BriefcaseBusiness, PenBox } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Header = () => {
 
@@ -10,8 +10,20 @@ const Header = () => {
   const handleOverlay = (e:any) => {
     if(e.target == e.currentTarget){
       setIsMenuOpen(false);
+      setSearch({});
     }
   }
+
+  const[search, setSearch] = useSearchParams()
+
+  useEffect(() =>
+  {
+    if(search.get('sign-in')){
+      setIsMenuOpen(true);
+    }
+
+  },[search]) 
+
 
   return (
     <div className="w-full">
