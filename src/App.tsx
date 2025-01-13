@@ -25,8 +25,7 @@ const App = () => {
           path: "/",
           element: (
             <ProtectedRoute>
-
-              <Onboarding />
+                  <Onboarding />
             </ProtectedRoute>
            
           ),

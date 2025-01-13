@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@clerk/clerk-react';
+import { ToastAction } from '@radix-ui/react-toast';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
@@ -7,15 +9,29 @@ import { BarLoader } from 'react-spinners';
 
 
 const Onboarding = () => {
+
+  const { toast } = useToast()
+
   const navigate = useNavigate()
   const {user,isLoaded} = useUser()
   const handlerole = async (role:string) =>
   {
     await user.update({unsafeMetadata: {role}}).then(() =>{
+      toast({
+        variant: "default",
+        title: "Role selected",
+        description: `You have selected the role of ${role}.`
+      });
            navigate(role == 'candidate' ? '/jobs' : '/post-job')
       })
       .catch((error) => {
         console.log(error)
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "There was a problem with your request.",
+          action: <ToastAction altText="Try again">Try again</ToastAction>,
+        })
       })    
   }
   useEffect(()=>
