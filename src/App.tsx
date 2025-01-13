@@ -1,6 +1,6 @@
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Landingpage from './pages/Landingpage';
+// import Landingpage from './pages/Landingpage';
 import Onboarding from './pages/Onboarding';
 import JobListing from './pages/JobListing';
 import PostJob from './pages/PostJob';
@@ -23,10 +23,6 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: <Landingpage />,
-        },
-        {
-          path: "/onboarding",
           element: (
             <ProtectedRoute>
 
