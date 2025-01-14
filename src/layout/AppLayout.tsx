@@ -14,7 +14,7 @@ const AppLayout = () => {
       </main>
       <div className="p-10 text-center bg-gray-800">
         Made with 💗 by RoadsideCoder
-      </div>
+      </div> 
     </div>
   );
 };
