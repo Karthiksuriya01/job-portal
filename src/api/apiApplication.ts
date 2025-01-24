@@ -1,4 +1,5 @@
 import supabaseClient, { supabaseUrl } from "@/utils/supabase";
+import { z } from "zod";
 
 // - Apply to job ( candidate )
 export async function applyToJob(token, _, jobData) {
@@ -64,3 +65,15 @@ export async function getApplications(token, { user_id }) {
 
   return data;
 }
+
+const schema = z.object({
+  resume: z
+    .any()
+    .refine(
+      (file) =>
+        file[0] &&
+        (file[0].type === "application/pdf" ||
+          file[0].type === "application/msword"),
+      { message: "Only PDF or Word documents are allowed" }
+    ),
+});
