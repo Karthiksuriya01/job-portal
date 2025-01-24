@@ -52,7 +52,7 @@ const Onboarding = () => {
       <h2>I am ....</h2>
       <div className='gap-8 flex justify-center place-items-center'>
         <Button variant="destructive" onClick={() => handlerole('candidate')}>Candidate</Button>
-        <Button variant="default" onClick={() => handlerole('recuriter')}>Recuriter</Button>
+        <Button variant="default" onClick={() => handlerole('recruiter')}>Recuriter</Button>
       </div>
     </div>
   );

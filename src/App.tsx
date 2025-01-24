@@ -1,4 +1,3 @@
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // import Landingpage from './pages/Landingpage';
 import Onboarding from './pages/Onboarding';
