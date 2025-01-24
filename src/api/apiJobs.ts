@@ -1,5 +1,14 @@
 import supabaseClient from "@/utils/supabase";
 
+// Define the Job interface
+interface Job {
+    title: string;
+    company?: {
+        logo_url?: string;
+    };
+    // Add other properties as needed
+}
+
 export async function getJobs(token:string,{location,company_id,searchQuery}:any) //token coming from clerk
 {
     const supabase = await supabaseClient(token);
@@ -30,3 +39,25 @@ export async function getJobs(token:string,{location,company_id,searchQuery}:any
     }
     return data
 }
+
+
+export async function getSingleJob(token: string, { job_id }: { job_id: string }): Promise<Job | null> {
+    const supabase = await supabaseClient(token);
+    const query = supabase
+      .from("jobs")
+      .select(
+        "*, company: companies(name,logo_url), applications: applications(*)"
+      )
+      .eq("id", job_id)
+      .single();
+  
+    const { data, error } = await query;
+  
+    if (error) {
+      console.error("Error fetching Job:", error);
+      return null;
+    }
+  
+    return data as Job;
+}
+

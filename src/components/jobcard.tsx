@@ -12,7 +12,6 @@ import { Heart, MapPinIcon, Trash2Icon } from "lucide-react";
 
 const JobCard = ({
   job,
-  savedInit = false,
   isMyJob = false,
 }) => {
 
@@ -46,10 +45,10 @@ const JobCard = ({
             More Details
           </Button>
         </Link>
-        <Button variant="secondary">
+        {/* <Button variant="secondary">
 
           <Heart fill="red"  size={40}/>
-        </Button>
+        </Button> */}
       </CardFooter>
     </Card>
   );

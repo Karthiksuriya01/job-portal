@@ -44,7 +44,7 @@ const Onboarding = () => {
     },[user,navigate])
     
   if(!isLoaded){
-    return <BarLoader className='mb-4' width={"100%"} color="#36d7b7"/>
+    return <BarLoader className='mb-4' width={"100%"} color="#DC143C"/>
   }
   
   return (
@@ -52,7 +52,7 @@ const Onboarding = () => {
       <h2>I am ....</h2>
       <div className='gap-8 flex justify-center place-items-center'>
         <Button variant="destructive" onClick={() => handlerole('candidate')}>Candidate</Button>
-        <Button variant="default" onClick={() => handlerole('recuriter')}>Job Seeker</Button>
+        <Button variant="default" onClick={() => handlerole('recuriter')}>Recuriter</Button>
       </div>
     </div>
   );
