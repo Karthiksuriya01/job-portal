@@ -1,20 +1,29 @@
 import { useUser } from '@clerk/clerk-react';
-import { ReactNode } from 'react';
-import { Navigate, useLocation} from 'react-router';
+import { ReactNode, useEffect } from 'react';
+import { Navigate, useLocation } from 'react-router';
 
 interface ProtectedRouteProps {
   children: ReactNode;
 }
-const ProtectedRoute = ({children}: ProtectedRouteProps) => {
 
-  const {isSignedIn,user,isLoaded} = useUser()
-  const {pathname} = useLocation()
+const ProtectedRoute = ({children}: ProtectedRouteProps) => {
+  const {isSignedIn, user, isLoaded} = useUser();
+  const {pathname} = useLocation();
+
+  useEffect(() => {
+    if (isLoaded && isSignedIn && user?.unsafeMetadata?.role) {
+      const role = user.unsafeMetadata.role;
+      if (pathname === '/') {
+        window.location.href = role === 'candidate' ? '/jobs' : '/post-job';
+      }
+    }
+  }, [isLoaded, isSignedIn, user, pathname]);
 
   if(isLoaded && !isSignedIn){
-    return <Navigate to='/?sign-in=ture' />
+    return <Navigate to='/?sign-in=true' />
   }
   
-  return <>{children}</>
+  return <>{children}</>;
 }
 
 export default ProtectedRoute;
