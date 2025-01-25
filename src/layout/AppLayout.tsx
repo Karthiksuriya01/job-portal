@@ -1,22 +1,12 @@
 import Header from "@/components/header";
 import { Toaster } from "@/components/ui/toaster";
 import { Outlet } from "react-router-dom";
-const companies = [
-  "Google",
-  "Microsoft",
-  "Amazon",
-  "Netflix",
-  "YouTube",
-  "Instagram",
-  "Uber",
-  "Spotify",
-];
 
 const AppLayout = () => {
   return (
     <div>
-      <div className="bg-black"></div>
-      <main className="min-h-screen container relative z-10">
+      <div className="grid-background"></div>
+      <main className="min-h-screen container relative w-full ">
      
         
         <Toaster />

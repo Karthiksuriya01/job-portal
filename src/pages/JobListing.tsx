@@ -69,7 +69,7 @@ const JobListing = () => {
   };
 
   if (!isLoaded) {
-    return <BarLoader className="mb-4" width={"100%"} color="#FFFFF" />;
+    return <BarLoader className="mb-4" width={"100%"} color="#367d7" />;
   }
 
   return (
